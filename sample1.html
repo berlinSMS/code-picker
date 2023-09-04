@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Plugin Beispiel</title>
+    <title>Code Picker Example</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="bsms-code-digits.js"></script>
+    <script src="bsms-code-picker.js"></script>
 </head>
 <body>
-    <h3>Default: 6 digits, only numbers</h3>
-	<div class="plugin-container"></div>
-</form>
+    <form>
+        <h3>Default: 6 digits, only numbers</h3>
+        <div class="plugin-container"></div>
+    </form>
     <script>
         $(document).ready(function () {
-            $('.plugin-container').bsmsCodeDigits();
+            // Apply the plugin to the container
+            $('.plugin-container').bsmsCodePicker();
         });
     </script>
 </body>

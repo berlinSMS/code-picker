@@ -3,66 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Plugin Beispiel</title>
+    <title>Code Picker Example</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="bsms-code-digits.js"></script>
-	<style>
-		.bsms-twofa-digit-3::after,
-		.bsms-twofa-digit-7::after,
-		.bsms-twofa-digit-11::after,
-		.bsms-twofa-digit-15::after {
-		     content: '🔗';
-		}
-		.bsms-twofa-digit {
-		    border-left-width:0;
-		    border-right-width:0;
-			margin:0;
-			border-radius: 0;
-		}
-		.bsms-twofa-digit-0,
-		.bsms-twofa-digit-4,
-		.bsms-twofa-digit-8,
-		.bsms-twofa-digit-12 {
-		    border-left-width:1px;
-			border-radius: 5px 0 0 5px;
-		}
-		.bsms-twofa-digit-3,
-		.bsms-twofa-digit-7,
-		.bsms-twofa-digit-11,
-		.bsms-twofa-digit-15 {
-		    border-right-width:1px;
-			border-radius: 0 5px 5px 0;
-			margin-right:10px;
-		}
+    <script src="bsms-code-picker.js"></script>
+    <style>
+        .bsms-code-digit-3::after,
+        .bsms-code-digit-7::after,
+        .bsms-code-digit-11::after,
+        .bsms-code-digit-15::after {
+             content: '🔗';
+        }
+        .bsms-code-digit {
+            border-left-width:0;
+            border-right-width:0;
+            margin:0;
+            border-radius: 0;
+        }
+        .bsms-code-digit-0,
+        .bsms-code-digit-4,
+        .bsms-code-digit-8,
+        .bsms-code-digit-12 {
+            border-left-width:1px;
+            border-radius: 5px 0 0 5px;
+        }
+        .bsms-code-digit-3,
+        .bsms-code-digit-7,
+        .bsms-code-digit-11,
+        .bsms-code-digit-15 {
+            border-right-width:1px;
+            border-radius: 0 5px 5px 0;
+            margin-right:10px;
+        }
         
-        .bsms-twofa-digit:focus {
+        .bsms-code-digit:focus {
             border: 0;
             box-shadow: inset 0 0 0 .125rem #1040c1,0 0 0 .375rem rgba(16,114,235,.16);
-			border-radius: 5px;
-			z-index:1;
-			position:relative
+            border-radius: 5px;
+            z-index:1;
+            position:relative
         }    
-	</style>
+    </style>
 </head>
 <body>
-<form>
+<form id="licence-code">
     <h3>Lizenzcode-Example: 16 Digits, allows numbers and letters</h3>
-	<div class="plugin-container"></div>
-	<br>
-	<input type="submit">
+    <div class="plugin-container"></div>
+    <br>
+    <input type="submit">
 </form>
     <script>
-	    function lastDigitEntered() {
-			alert('lastDigitEntered');
-		}
+        function lastDigitEntered() {
+            alert('lastDigitEntered');
+            $('#licence-code').submit();
+        }
         $(document).ready(function () {
-            // Das Plugin auf den Container anwenden
-            $('.plugin-container').bsmsCodeDigits({ 
-				nrOfBoxes: 16, 
-				allowedChars: '0123456789ABCDEFGHIJKLMONPQRSTUVWXYZ',
-				inputName: 'code',
-				lastDigitEntered: lastDigitEntered
-			});
+            // Apply the plugin to the container
+            $('.plugin-container').bsmsCodePicker({ 
+                nrOfBoxes: 16, 
+                allowedChars: '0123456789ABCDEFGHIJKLMONPQRSTUVWXYZ',
+                inputName: 'code',
+                lastDigitEntered: lastDigitEntered
+            });
         });
     </script>
 </body>
