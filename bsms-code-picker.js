@@ -47,8 +47,10 @@
  (function ($) {
     $.fn.bsmsCodePicker = function (options={}) {
         
+		if (!options.className) options.className = 'bsms-code-digit';
+        
         const defaultStyles = `
-.bsms-code-digit{
+.${options.className} {
     width:40px;
     height: 40px;
     text-align: center;
@@ -59,7 +61,7 @@
     transition: border-color 0.3s;
 }
 
-.bsms-code-digit:focus {
+.${options.className}:focus {
     border: 0;
     box-shadow: inset 0 0 0 .125rem #1040c1,0 0 0 .375rem rgba(16,114,235,.16);
 }`;    
