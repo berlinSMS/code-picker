@@ -47,7 +47,7 @@
 <body>
 <form id="licence-code">
     <h3>Lizenzcode-Example: 16 Digits, allows numbers and letters</h3>
-    <div class="plugin-container"></div>
+    <div class="code-picker-container"></div>
     <br>
     <input type="submit">
 </form>
@@ -57,8 +57,8 @@
             $('#licence-code').submit();
         }
         $(document).ready(function () {
-            // Apply the plugin to the container
-            $('.plugin-container').bsmsCodePicker({ 
+            // Apply code-picker to the container
+            $('.code-picker-container').bsmsCodePicker({ 
                 nrOfBoxes: 16, 
                 allowedChars: '0123456789ABCDEFGHIJKLMONPQRSTUVWXYZ',
                 inputName: 'code',
