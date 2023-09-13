@@ -52,8 +52,8 @@
     <input type="submit">
 </form>
     <script>
-        function lastDigitEntered() {
-            alert('lastDigitEntered');
+        function lastDigitEntered(code) {
+            alert(`lastDigitEntered: code=${code}`);
             $('#licence-code').submit();
         }
         $(document).ready(function () {

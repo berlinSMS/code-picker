@@ -82,7 +82,7 @@
         $(`<style type="text/css">${settings.userStyles}</style>`)
             .prependTo('head');    
             
-        return this.each(function () {    
+        this.each(function () {    
             
             const $container = $(this);
             const $hiddenInput = $(`<input type="hidden" name="${settings.inputName}">`)
@@ -131,7 +131,7 @@
                 $hiddenInput.val(fullCode);
 
                 //do callback
-                if (sanitizedValue && !$nextBox.length && settings.lastDigitEntered) settings.lastDigitEntered();
+                if (sanitizedValue && !$nextBox.length && settings.lastDigitEntered) settings.lastDigitEntered(fullCode);
             });
 
             $digitBoxes.on('keyup', function (e) {
@@ -154,5 +154,9 @@
                 
             });
         });
+
+        this.lastDigitEntered = callback => { settings.lastDigitEntered = callback; return this; };
+
+        return this;
     };
 })(jQuery);
