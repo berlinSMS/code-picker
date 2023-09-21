@@ -58,4 +58,5 @@ $(document).ready(function () {
 | className        | for costum-css, class of the digits                                                                                                                       | bsms-code-digit            |         
 | translate        | Dictionary of key/value pairs, where keys are strings or regexp to be replaced in the user input, and values are strings or functions to be replaced with | '\\\\w':c=>c.toUpperCase() |
 | lastDigitEntered | callback-function, which was called, when the last digit was entered, could be intrpreted as user finished input and used for precheck or form-submit     | null                       |
+| showCredits      | shows credits                                                                                                                                             | true                       |
                                                                                                                                                                             
