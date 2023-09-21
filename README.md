@@ -1,6 +1,9 @@
 # jQuery CodePicker
 [Homepage](https://www.berlinsms.de/)
 
+# Description
+A jquery-plugin to pick a code or some digits in a formular, usful for OTP, TAN..
+
 # Usage
 
 Include jquery    
@@ -32,7 +35,7 @@ $(document).ready(function () {
 
 Add options, if needed:
 ```js
-$(document).ready(function () {
+$(document).ready(()=>{
     $('.plugin-container').bsmsCodePicker( { nrOfBoxes:4 } );
 });    
 ```

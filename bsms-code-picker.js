@@ -43,7 +43,7 @@
  * OR THE USE OF OR OTHER DEALINGS WITH THE SOFTWARE.
  * 
  */
- 
+
  (function ($) {
     $.fn.bsmsCodePicker = function (options={}) {
         
@@ -60,10 +60,23 @@
     margin: 0 5px;
     transition: border-color 0.3s;
 }
-
 .${options.className}:focus {
     border: 0;
     box-shadow: inset 0 0 0 .125rem #1040c1,0 0 0 .375rem rgba(16,114,235,.16);
+}
+.${options.className}-credits {    
+    position:relative;
+    right:0;
+    top:0;
+    background-color: white;
+    padding: 2px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color:black;
+    font-size:12px;
+    font-family:arial;
+    text-decoration: None;
+	white-space: nowrap;
 }`;    
                 
         const defaultSettings = {
@@ -74,7 +87,8 @@
             className: 'bsms-code-digit',
             /* translate: { 'I':'1', 'O':'0', 'l':'1' }, */        
             translate: { '\\w':c=>c.toUpperCase() },
-            lastDigitEntered: null
+            lastDigitEntered: null,
+            showCredits: true
         };    
                 
         const settings = $.extend( defaultSettings, options );
@@ -90,6 +104,10 @@
     
             for (var i = 0; i < settings.nrOfBoxes; i++) {
                 $container.append(`<input type="text" class="${settings.className} ${settings.className}-${i}">`);
+            }
+
+            if (settings.showCredits) {
+                $container.append(`<a class="${settings.className}-credits" href="https://www.berlinsms.de">code-picker powered by berlinsms.de</a>`);
             }
 
             const $digitBoxes = $container.find('.bsms-code-digit');

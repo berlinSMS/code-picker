@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Picker Example</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="bsms-code-picker.js"></script>
+    <script src="https://static.berlinsms.de/toolsforcoder/code-picker/bsms-code-picker.js"></script>
+    <style>
+        body, h3 {
+            font-family: arial
+        }
+    </style>
 </head>
 <body>
-<form>
-    <h3>Only for 4 digits, allow hex (0123456789abcdef)</h3>
-    <div class="plugin-container"></div>
-    <br>
-    <input type="submit">
-</form>
-    <script>
-        $(document).ready(function () {
-            // Apply the code-picker to the container
-            $('.plugin-container').bsmsCodePicker({ 
-                nrOfBoxes: 4, 
-                allowedChars: '0123456789ABCDEF',
-                inputName: 'code'
-            });
-        });
-    </script>
+  <form>
+      <h3> Only for 4 digits, allow hex (0123456789abcdef)</h3>
+      <div class="plugin-container"> </div>
+      <br>
+      <br>
+      <input type="submit">
+      </form>
+      <script>
+          $(() => {
+          // Apply the code-picker to the container
+          $('.plugin-container').bsmsCodePicker({
+              nrOfBoxes: 4,
+              allowedChars: '0123456789ABCDEF',
+              inputName: 'code'
+          });
+      });
+      </script>
 </body>
 </html>

@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Picker Example</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="bsms-code-picker.js"></script>
+    <script src="https://static.berlinsms.de/toolsforcoder/code-picker/bsms-code-picker.js"></script>
+    <style>
+        body, h3 {
+            font-family: arial
+        }
+    </style>
 </head>
 <body>
     <form>
@@ -13,7 +18,7 @@
         <div class="code-picker-container"></div>
     </form>
     <script>
-        $(document).ready(function () {
+        $(()=>{
             // Apply the plugin to the container
             $('.code-picker-container').bsmsCodePicker();
         });
