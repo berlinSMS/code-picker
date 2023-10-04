@@ -12,7 +12,7 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { from: './src/bsms-code-picker.css', to: 'bsms-code-picker.min.css' }, 
+                { from: './src/bsms-code-picker.css', to: 'bsms-code-picker.css' }, 
             ],
         }),
     ],
