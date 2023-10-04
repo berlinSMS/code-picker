@@ -1,0 +1,28 @@
+{
+  "name": "@berlinsms/code-picker",
+  "version": "1.0.4",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "A jquery-plugin to pick a code or some digits in a formular, usful for OTP, TAN..",
+  "scripts": {
+    "build": "webpack --mode production",
+    "minify": "webpack --mode development",
+    "deploy": "npm run build && svn commit && git push && npm login && npm publish --access public && npm unpublish @berlinsms/code-picker@1.0.3 --force"
+  },
+  "keywords": [
+    "js",
+    "code-picker",
+    "TAN",
+    "OTP",
+    "digits",
+    "jquery"
+  ],
+  "author": "haka for berlinsms <service@berlinsms.de> (https://www.berlinsms.de)",
+  "license": "MIT",
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^4.10.0"
+  }
+}
