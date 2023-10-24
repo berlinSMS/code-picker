@@ -10,38 +10,38 @@
         body,h3 {
             font-family:arial
         }
-        .bsms-code-digit-3::after,
-        .bsms-code-digit-7::after,
-        .bsms-code-digit-11::after,
-        .bsms-code-digit-15::after {
+        input[type="text"].bsms-code-digit-3::after,
+        input[type="text"].bsms-code-digit-7::after,
+        input[type="text"].bsms-code-digit-11::after,
+        input[type="text"].bsms-code-digit-15::after {
             content: '🔗';
         }
 
-        .bsms-code-digit {
+        input[type="text"].bsms-code-digit {
             border-left-width: 0;
             border-right-width: 0;
             margin: 0;
             border-radius: 0;
         }
 
-        .bsms-code-digit-0,
-        .bsms-code-digit-4,
-        .bsms-code-digit-8,
-        .bsms-code-digit-12 {
+        input[type="text"].bsms-code-digit-0,
+        input[type="text"].bsms-code-digit-4,
+        input[type="text"].bsms-code-digit-8,
+        input[type="text"].bsms-code-digit-12 {
             border-left-width: 1px;
             border-radius: 5px 0 0 5px;
         }
 
-        .bsms-code-digit-3,
-        .bsms-code-digit-7,
-        .bsms-code-digit-11,
-        .bsms-code-digit-15 {
+        input[type="text"].bsms-code-digit-3,
+        input[type="text"].bsms-code-digit-7,
+        input[type="text"].bsms-code-digit-11,
+        input[type="text"].bsms-code-digit-15 {
             border-right-width: 1px;
             border-radius: 0 5px 5px 0;
             margin-right: 10px;
         }
 
-        .bsms-code-digit:focus {
+        input[type="text"].bsms-code-digit:focus {
             border: 0;
             box-shadow: inset 0 0 0 .125rem #1040c1,0 0 0 .375rem rgba(16,114,235,.16);
             border-radius: 5px;
