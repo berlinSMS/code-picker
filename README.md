@@ -6,16 +6,14 @@ A jquery-plugin to pick a code or some digits in a formular, usful for OTP, TAN.
 
 # Usage
 
-Download js and css for bsms-code-picker
+Download bsms-code-picker.js 
 ```link
 https://static.berlinsms.de/toolsforcoder/code-picker/dist/bsms-code-picker.min.js
-https://static.berlinsms.de/toolsforcoder/code-picker/dist/bsms-code-picker.css
 ```
 
-Include jquery.js and js+css for bsms-code-picker in <head>-part of your page   
+Include jquery.js and bsms-code-picker.js in <head>-part of your page   
 ```html
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="bsms-code-picker.css">
 <script src="bsms-code-picker.min.js"></script>
 ```
 
