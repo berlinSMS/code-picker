@@ -1,4 +1,4 @@
-input[type="text"].bsms-code-digit {
+div.bsms-code-picker > input[type="text"].bsms-code-digit {
     width: 40px;
     height: 40px;
     text-align: center;
@@ -8,7 +8,7 @@ input[type="text"].bsms-code-digit {
     margin: 0 5px;
     transition: border-color 0.3s;
 }
-input[type="text"].bsms-code-digit:focus {
+div.bsms-code-picker > input[type="text"].bsms-code-digit:focus {
     border: 0;
     box-shadow: inset 0 0 0 .125rem #1040c1,0 0 0 .375rem rgba(16,114,235,.16);
 }
