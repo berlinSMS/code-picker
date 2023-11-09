@@ -44,7 +44,7 @@
  * 
  */
 
- (function ($) {
+ ($=>{
     $.fn.bsmsCodePicker = function (options={}) {
                 
         const defaultSettings = {
@@ -59,26 +59,30 @@
                 
         const settings = $.extend( defaultSettings, options );
             
-        this.each(function () {    
+        this.each(()=>{    
             
-            const $container = $(this);
+            const $container = $('<div class="bsms-code-picker">')
+                .appendTo($(this));
             const $hiddenInput = $(`<input type="hidden" name="${settings.inputName}">`)
                 .appendTo($container);
     
+            var $digitBoxes = $();
             for (var i = 0; i < settings.nrOfBoxes; i++) {
-                $container.append(`<input type="text" class="bsms-code-digit bsms-code-digit-${i}">`);
+                $digitBoxes = $digitBoxes.add( `<input type="text" class="bsms-code-digit bsms-code-digit-${i}">` )
+                //$container.add($digitBox);  
             }
+            $digitBoxes
+                .appendTo($container)
+                .first().focus();
 
             if (settings.showCredits) {
                 $container.append(`<a class="bsms-code-digit-credits" href="https://www.berlinsms.de">code-picker powered by berlinsms.de</a>`);
             }
 
-            const $digitBoxes = $container.find('.bsms-code-digit');
-
-            $digitBoxes.on('input', function () {
-                const currentBox = $digitBoxes.index(this);
+            $digitBoxes.on('input', e => {
+                const currentBox = $digitBoxes.index(e.target);
                 const $nextBox = $digitBoxes.eq(currentBox + 1);
-                var enteredValue = $(this).val();
+                var enteredValue = $(e.target).val();
 
                 //translate charset
                 if ('object' == typeof settings.translate) {    //object-context
@@ -95,11 +99,13 @@
                     .split('')
                     .filter(char => settings.allowedChars.includes(char));                
                 var sanitizedValue = digits?.shift();
-                $(this).val(sanitizedValue);
-                if (sanitizedValue) {                
-                    // move focus and digits to next box
+                $(e.target).val(sanitizedValue);
+                if (sanitizedValue) { // move focus to next box
                     $nextBox
-                        .focus()
+                        .focus();
+                }
+                if (digits.length > 0) {  // move digits to next box
+                    $nextBox
                         .val(digits.join(''))
                         .trigger('input');
                 }
@@ -115,24 +121,38 @@
                 if (sanitizedValue && !$nextBox.length && settings.lastDigitEntered) settings.lastDigitEntered(fullCode);
             });
 
-            $digitBoxes.on('keyup', function (e) {
-                if (e.keyCode === 8 && this.value === '') {
-                    const currentBox = $digitBoxes.index(this);
-                    if (currentBox > 0) {
-                        const $prevBox = $digitBoxes.eq(currentBox - 1)
+            $digitBoxes.on('keyup', e => {
+                if (e.keyCode === 8) {
+                    $(e.target).val('');
+                    const currentBoxNr = $digitBoxes.index(e.target);
+                    if (currentBoxNr > 0) {
+                        const $prevBox = $digitBoxes.eq(currentBoxNr - 1)
+                            .focus();
+                    }
+                }
+                if (e.keyCode === 37) {
+                    const currentBoxNr = $digitBoxes.index(e.target);
+                    if (currentBoxNr > 0) {
+                        const $prevBox = $digitBoxes.eq(currentBoxNr - 1)
+                            .focus();
+                    }
+                }
+                if (e.keyCode === 39) {
+                    const currentBoxNr = $digitBoxes.index(e.target);
+                    if (currentBoxNr < $digitBoxes.length-1) {
+                        const $nextBox = $digitBoxes.eq(currentBoxNr + 1)
                             .focus();
                     }
                 }
             });
 
-            $digitBoxes.on('focus', function () {
-                $(this).select(); // Inhalt selektieren, wenn Box den Fokus bekommt
-                const currentBox = $digitBoxes.index(this);
-                if (currentBox == 0) return;
+            $digitBoxes.on('focus', e=>{
+                $(e.target).select(); // Inhalt selektieren, wenn Box den Fokus bekommt
+                const currentBox = $digitBoxes.index(e.target);
+                if (currentBox <= 0) return;
                 const $prevBox = $digitBoxes.eq(currentBox - 1);
                 if ($prevBox.val() && settings.allowedChars.includes($prevBox.val())) return;
                 $prevBox.focus();
-                
             });
         });
 
